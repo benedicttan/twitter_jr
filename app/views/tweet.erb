@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Hola mocha chocolata, welcome to Ben's Twitter Fetcher!</h2></ br>
+  </ br>
+  <h3>User: <%= params[:username] %></h3>
+  <div class=body>
+    <ul>
+    <% @tweets.each do |t| %>
+      <li><%= t.text %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
