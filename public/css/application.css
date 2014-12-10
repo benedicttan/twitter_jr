@@ -19,3 +19,12 @@ th {
   line-height: 1.5em;
   margin-bottom: 1em;
 }
+
+span {
+  width:100%;
+}
+
+.loading {
+  text-align:center;
+  margin:10px;
+}

@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Hola mocha chocolata, welcome to Ben's Twitter Fetcher!</h2></ br>
+  </ br>
+  <h3>User: <%= params[:username] %></h3>
+  <div class=body>
+    <span><img src="/images/ajax-loader.gif" /></span>&nbsp;&nbsp;&nbsp;<a>Loading tweets...</a>
+  </div>
+  <input type=hidden value="<%= params[:username] %>" id="username">
+</div>
+
+<script>
+
+  $(document).ready(function () {
+    $.ajax({
+      type: "GET",
+      url: "/" + $("#username").val() + "/show?scour=true",
+      data: {  }
+    })
+      .done(function( msg ) {
+        $("body").html(msg);
+      });
+  });
+
+</script>

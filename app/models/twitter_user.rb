@@ -2,11 +2,15 @@ class TwitterUser < ActiveRecord::Base
   has_many :tweets
 
   def tweets_stale?
-    (Time.now - self.tweets.last.created_at)/60 > 15
+    if self.tweets.empty? || (Time.now - self.tweets.last.created_at)/60 > 15
+      return true
+    else
+      return false
+    end
   end
 
   def fetch_tweets!
-    client.user_timeline(username, {count: 10}).each do |t|
+    client.user_timeline(username).each do |t|
       Tweet.create(text: t.text, twitter_user_id: self.id)
     end
   end
