@@ -2,7 +2,7 @@ class TwitterUser < ActiveRecord::Base
   has_many :tweets
 
   def tweets_stale?
-    if self.tweets.empty? || (Time.now - self.tweets.last.created_at)/60 > 15
+    if self.tweets.empty? || (Time.now - self.tweets.last.created_at) > 10
       return true
     else
       return false

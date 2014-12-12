@@ -18,6 +18,8 @@ gem 'rake'
 gem 'shotgun'
 
 gem 'twitter'
+gem 'oauth'
+gem 'json'
 
 group :test do
   gem 'faker'

@@ -22,6 +22,8 @@ require 'erb'
 
  # for this app only!
 require 'twitter'
+require 'oauth'
+require 'json'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -37,9 +39,9 @@ require APP_ROOT.join('config', 'database')
 
 def client
   Twitter::REST::Client.new do |config|
-    config.consumer_key        = "M73y52uYN8piejAwWTMvPhm6B"
-    config.consumer_secret     = "5Ne59WsyY4AOdV9qYeHIIqqkd3HFAgXBX6Ac3F8O9Ad31iEhUZ"
-    config.access_token        = "81753202-GMEcVm1Gly5ZjSQEec21xen1qjtLOFxS4Ww7n1rXi"
-    config.access_token_secret = "ujjLL7gXZHvLkHiK2ZhTFvkaCjBszVGELEHZlTlfRzT96"
+    config.consumer_key        = "fA5i1jQRP5LRIuhly6TnZFBoI"
+    config.consumer_secret     = "bXePQSxh8z4ZmF7VZvUtjOpB4q6NF40N9PA8uAQrZm1Ot8iQrn"
+    config.access_token        = "81753202-ftg7E9uyjrpDaJmEXvQSPHX3Pho8gOKJa0oE6Riuh"
+    config.access_token_secret = "QG0rW14JezJVsrx2gt0vuzJCkuHLNt4kS4HETfuvmnslu"
   end
 end
