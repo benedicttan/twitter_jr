@@ -1,0 +1,10 @@
+0886432
+
+http://weijiachen.co/callback
+?oauth_token=lrbtYJrc9VXyiEuNgcgCVWYSRkwYpcpS
+&oauth_verifier=7h3DgUT3bBsmPVLkqXebYkSkXqPQSde5
+
+
+http://localhost:4567/callback
+?oauth_token=lrbtYJrc9VXyiEuNgcgCVWYSRkwYpcpS
+&oauth_verifier=7h3DgUT3bBsmPVLkqXebYkSkXqPQSde5
