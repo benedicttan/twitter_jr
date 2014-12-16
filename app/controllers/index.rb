@@ -2,19 +2,19 @@ get '/' do
   erb :index
 end
 
-get '/:username' do
+get '/t/:username' do
   @user = TwitterUser.where(username: params[:username].downcase).first_or_create
 
   if @user.tweets_stale?
     @user.tweets.destroy_all
-    redirect to ("/" << params[:username] <<  "/load")
+    redirect to ("/t/" << params[:username] <<  "/load")
   else # not stale
     @tweets = @user.tweets.limit(10)
-    redirect to ("/" << params[:username] << "/show?scour=false")
+    redirect to ("/t/" << params[:username] << "/show?scour=false")
   end
 end
 
-get '/:username/show' do
+get '/t/:username/show' do
   @user = TwitterUser.where(username: params[:username].downcase).first
   if params[:scour]
     @user.fetch_tweets!
@@ -23,7 +23,7 @@ get '/:username/show' do
   erb :tweet_show
 end
 
-get '/:username/load' do
+get '/t/:username/load' do
   @user = TwitterUser.where(username: params[:username].downcase).first_or_create
   erb :tweet_load
 end

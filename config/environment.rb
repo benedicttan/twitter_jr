@@ -24,6 +24,7 @@ require 'erb'
 require 'twitter'
 require 'oauth'
 require 'json'
+require 'byebug'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
@@ -37,11 +38,8 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
 
-def client
-  Twitter::REST::Client.new do |config|
-    config.consumer_key        = "fA5i1jQRP5LRIuhly6TnZFBoI"
-    config.consumer_secret     = "bXePQSxh8z4ZmF7VZvUtjOpB4q6NF40N9PA8uAQrZm1Ot8iQrn"
-    config.access_token        = "81753202-ftg7E9uyjrpDaJmEXvQSPHX3Pho8gOKJa0oE6Riuh"
-    config.access_token_secret = "QG0rW14JezJVsrx2gt0vuzJCkuHLNt4kS4HETfuvmnslu"
-  end
-end
+
+TWITTER  = File.expand_path(File.dirname(__FILE__) + "/credentials.yml")
+oauth = YAML.load_file(TWITTER)
+CONSUMER_KEY = oauth["twitter_consumer_key"]
+CONSUMER_SECRET = oauth["twitter_consumer_secret"]

@@ -13,7 +13,7 @@
   $(document).ready(function () {
     $.ajax({
       type: "GET",
-      url: "/" + $("#username").val() + "/show?scour=true",
+      url: "/t/" + $("#username").val() + "/show?scour=true",
       data: {  }
     })
       .done(function( msg ) {

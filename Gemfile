@@ -21,6 +21,8 @@ gem 'twitter'
 gem 'oauth'
 gem 'json'
 
+gem 'byebug'
+
 group :test do
   gem 'faker'
   gem 'rspec'
