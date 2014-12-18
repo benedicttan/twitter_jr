@@ -1,4 +1,4 @@
-enable  :sessions
+set :protection, except: :session_hijacking
 
 get '/oauth/request_token' do
   callback_url = "http://codedivben.ngrok.com/callback"
@@ -21,16 +21,21 @@ get '/callback' do
     request_token = OAuth::RequestToken.new(session[:consumer],session[:request_token], session[:request_token_secret])
     access_token =  request_token.get_access_token(oauth_verifier: verifier)
 
-    client = Twitter::REST::Client.new do |c|
-      c.consumer_key        = CONSUMER_KEY
-      c.consumer_secret     = CONSUMER_SECRET
-      c.access_token        = access_token.token
-      c.access_token_secret = access_token.secret
-    end
+    new_user = User.where(access_token: access_token.token, access_token_secret: access_token.secret).first_or_create
 
-    client.update("Hi Rizal C.S.yaml")
-    @sometext = "ello"
-    erb :callback
+    new_user.client(access_token.token, access_token.secret)
+
+    session[:user_id] = new_user.id
+    @screen_name = new_user.twitter_client.user.screen_name
+    erb :main
   end
 
+end
+
+get '/status/:job_id' do
+  # return the status of a job to an AJAX call
+  # jid = params[:job_id]
+  # if job_is_complete(jid)
+  #   erb :somethinghere
+  # end
 end

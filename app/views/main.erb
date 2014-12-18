@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Hola mocha chocolata, welcome to Ben's Twitter Fetcher!</h2></ br>
   </ br>
-  <p>User: @benedict_thy</p>
+  <p>User: <%= @screen_name %></p>
   <form method=post action="/post" id="tweet">
     <p>Characters left: <a id="charleft">140</a></p>
     <textarea maxlength=140 id="tweetbox" name="tweetbox"></textarea></ br>
@@ -12,10 +12,6 @@
     <img src=images/ajax-loader.gif />
   </div>
   <div>
-  </br>
-  <div>
-    <a href="/oauth/request_token">Sign in</a>
-  </div>
 </div>
 
 

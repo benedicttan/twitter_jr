@@ -3,6 +3,9 @@
 #      http://stackoverflow.com/questions/7243486/why-do-you-need-require-bundler-setup
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 
+require 'sidekiq'
+require 'redis'
+
 require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 # Require gems we care about
@@ -43,3 +46,14 @@ TWITTER  = File.expand_path(File.dirname(__FILE__) + "/credentials.yml")
 oauth = YAML.load_file(TWITTER)
 CONSUMER_KEY = oauth["twitter_consumer_key"]
 CONSUMER_SECRET = oauth["twitter_consumer_secret"]
+
+
+
+
+client = Twitter::REST::Client.new do |c|
+    c.consumer_key        = CONSUMER_KEY
+    c.consumer_secret     = CONSUMER_SECRET
+    c.access_token        = "81753202-ftg7E9uyjrpDaJmEXvQSPHX3Pho8gOKJa0oE6Riuh"
+    c.access_token_secret = "QG0rW14JezJVsrx2gt0vuzJCkuHLNt4kS4HETfuvmnslu"
+end
+

@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'sidekiq'
+gem 'redis'
+
 # PostgreSQL driver
 gem 'pg'
 
